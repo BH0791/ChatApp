@@ -24,7 +24,8 @@ fun MonTexte() {
 fun TonText() {
     Text(
         text = "Simple text",
-        color = colorResource(id = R.color.purple_500)
+        color = colorResource(id = R.color.purple_500),
+        style = TextStyle(color = Color.Yellow)
     )
 }
 
