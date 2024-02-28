@@ -28,20 +28,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-@Composable
-fun MyMethode(name : String) {
-
-    Text(
-        modifier = Modifier
-            .background(Color.Red)
-            .padding(5.dp),
-        text =  "Hi $name!",
-        fontSize = 20.sp,
-        fontWeight = FontWeight.Bold
-    )
-    
-}
 // ** C'est que pour la preview et rien d'autre **
 // ** @Preview a plusieur arguments
 @Preview(showBackground = true)
