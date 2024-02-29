@@ -32,32 +32,32 @@ import androidx.compose.ui.unit.sp
 //    )
 //}
 
-@Composable
-fun UserBadge(
-    username : String,
-    modifier : Modifier = Modifier
-) {
-    Row(
-        modifier = modifier
-    ) {
-        Icon(
-            imageVector = Icons.Rounded.Person,
-            contentDescription = null,
-            modifier = Modifier
-                .size(20.dp)
-                .border(
-                    width = 1.dp,
-                    color = Color(0xFFFF7043),
-                    shape = CircleShape
-                )
-                .padding(2.dp)
-        )
-        Text(
-            text = username,
-            modifier = Modifier.padding(start = 4.dp)
-        )
-    }
-}
+//@Composable
+//fun UserBadge(
+//    username : String,
+//    modifier : Modifier = Modifier
+//) {
+//    Row(
+//        modifier = modifier
+//    ) {
+//        Icon(
+//            imageVector = Icons.Rounded.Person,
+//            contentDescription = null,
+//            modifier = Modifier
+//                .size(20.dp)
+//                .border(
+//                    width = 1.dp,
+//                    color = Color(0xFFFF7043),
+//                    shape = CircleShape
+//                )
+//                .padding(2.dp)
+//        )
+//        Text(
+//            text = username,
+//            modifier = Modifier.padding(start = 4.dp)
+//        )
+//    }
+//}
 
 @Composable
 fun Message(modifier : Modifier = Modifier) {
