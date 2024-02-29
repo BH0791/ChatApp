@@ -95,8 +95,9 @@ fun MessageContent(
     ) {
         Text(
             text = text,
-            color = MaterialTheme.colorScheme.primary,
-            fontSize = 18.sp
+//            color = MaterialTheme.colorScheme.primary,
+//            style = MaterialTheme.typography.headlineSmall,
+//            fontSize = 18.sp
         )
         Text(
             text = time,
@@ -118,7 +119,7 @@ fun MessageContent(
 @Preview(showBackground = true)
 @Composable
 fun AfficheTonMessage() {
-    Message()
+    MessageContent(text = "Je suis le professeur", time = "6:55 pm")
 }
 //@Preview(showBackground = true)
 //@Composable
