@@ -1,7 +1,7 @@
 ## ChatApp
 ### Premiers pas avec Jetpack Compose 
 
-*Aimer apprendre est proche de la sagesse. Confucius *
+*Aimer apprendre est proche de la sagesse. Confucius*
 
 - Fonction Composable MaterialTheme
 - Définir un thème propre à notre application
