@@ -32,83 +32,10 @@ import androidx.compose.ui.unit.sp
 //    )
 //}
 
-//@Composable
-//fun UserBadge(
-//    username : String,
-//    modifier : Modifier = Modifier
-//) {
-//    Row(
-//        modifier = modifier
-//    ) {
-//        Icon(
-//            imageVector = Icons.Rounded.Person,
-//            contentDescription = null,
-//            modifier = Modifier
-//                .size(20.dp)
-//                .border(
-//                    width = 1.dp,
-//                    color = Color(0xFFFF7043),
-//                    shape = CircleShape
-//                )
-//                .padding(2.dp)
-//        )
-//        Text(
-//            text = username,
-//            modifier = Modifier.padding(start = 4.dp)
-//        )
-//    }
-//}
 
-@Composable
-fun Message(modifier : Modifier = Modifier) {
-    Row (
-        modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
-    ){
-        Column (
-            modifier = modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
 
-        ){
-            UserBadge(username = "Me", modifier =  Modifier.align(Alignment.End)
-            )
-            MessageContent("Louis", "61.6 pm")
-        }
-        //ReadStatusIcon()
-    }
-}
-@Composable
-fun MessageContent(
-    text: String,
-    time: String,
-    modifier: Modifier = Modifier
-){
-    Column(
-        modifier = modifier
-            .border(
-                width = 2.dp,
-                color = MaterialTheme.colorScheme.secondary,
-                shape = MaterialTheme.shapes.small
-            )
-            .padding(8.dp)
 
-    ) {
-        Text(
-            text = text,
-//            color = MaterialTheme.colorScheme.primary,
-//            style = MaterialTheme.typography.headlineSmall,
-//            fontSize = 18.sp
-        )
-        Text(
-            text = time,
-            modifier = Modifier.align(Alignment.End),
-            fontSize = 12.sp,
-            fontWeight = FontWeight.Light,
-            fontStyle = FontStyle.Italic
-        )
-    }
 
-}
 
 //@Preview(showBackground = true)
 //@Composable

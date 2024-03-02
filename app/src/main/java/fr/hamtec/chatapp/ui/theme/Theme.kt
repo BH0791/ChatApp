@@ -1,6 +1,7 @@
 package fr.hamtec.chatapp.ui.theme
 
 import android.app.Activity
+import android.graphics.fonts.FontFamily
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -36,7 +37,8 @@ private val LightColorScheme = lightColorScheme(
 @Composable
 fun ChatAppTheme(
     darkTheme : Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
+    // La couleur dynamique est disponible sur Android 12+
+
     dynamicColor : Boolean = true,
     content : @Composable () -> Unit
 ) {
@@ -53,6 +55,7 @@ fun ChatAppTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        shapes = ChatAppShapes,
         content = content
     )
 }
