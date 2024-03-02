@@ -19,8 +19,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -57,7 +61,8 @@ fun DemoTypeSafeModifier() {
 @Composable
 fun UserBadge(
     username : String,
-    modifier : Modifier = Modifier) {
+    modifier : Modifier = Modifier
+) {
 
     Row {
         Icon(
@@ -78,12 +83,13 @@ fun UserBadge(
         )
     }
 }
+
 @Composable
 fun MessageContent(
-    text: String,
-    time: String,
-    modifier: Modifier = Modifier
-){
+    text : String,
+    time : String,
+    modifier : Modifier = Modifier
+) {
     Column(
         modifier = modifier
             .border(
@@ -107,32 +113,72 @@ fun MessageContent(
             fontWeight = FontWeight.Light,
             fontStyle = FontStyle.Italic
         )
+        Text(
+            text = text.highlightMentions(
+                color = MaterialTheme.colorScheme.primary
+            )
+        )
     }
 
 }
 
 @Composable
 fun Message(modifier : Modifier = Modifier) {
-    Row (
+    Row(
         modifier = Modifier.border(1.dp, Color.Yellow),
         horizontalArrangement = Arrangement.spacedBy(10.dp)
 
-    ){
-        Column (
+    ) {
+        Column(
             modifier = modifier.border(2.dp, Color(0xFF000000)),
             verticalArrangement = Arrangement.spacedBy(4.dp)
 
-        ){
+        ) {
 //            UserBadge(username = "Me", modifier =  Modifier.align(Alignment.End))
             MessageContent("Louis", "61.6 pm")
             MessageContent("Louis", "61.6 pm")
-            UserBadge(username = "Me", Modifier.align(Alignment.End).border(5.dp, Color(0xFFFF4585)))
-            UserBadge(username = "Me", Modifier.align(Alignment.End).border(5.dp, Color(0xFFFF4585)))
-            UserBadge(username = "Me", Modifier.align(Alignment.End).border(5.dp, Color(0xFFFF4585)))
+            UserBadge(
+                username = "Me",
+                Modifier
+                    .align(Alignment.End)
+                    .border(5.dp, Color(0xFFFF4585))
+            )
+            UserBadge(
+                username = "Me",
+                Modifier
+                    .align(Alignment.End)
+                    .border(5.dp, Color(0xFFFF4585))
+            )
+            UserBadge(
+                username = "Me",
+                Modifier
+                    .align(Alignment.End)
+                    .border(5.dp, Color(0xFFFF4585))
+            )
         }
         //ReadStatusIcon(modifier = Modifier.size(16.dp).align(Alignment.Bottom))
     }
 }
+
+fun String.highlightMentions(color : Color) : AnnotatedString {
+    val words : List<String> = this.split(" ")
+
+    return buildAnnotatedString {
+        words.forEachIndexed { index, word ->
+            if (word.startsWith("@")) {
+                withStyle(style = SpanStyle(color = color)) {
+                    append(word)
+                }
+            } else {
+                append(word)
+            }
+            if (index < words.count() - 1) {
+                append(" ")
+            }
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewDemoModifier() {
@@ -140,5 +186,5 @@ fun PreviewDemoModifier() {
 //    DemoTypeSafeModifier()
 //    UserBadge(username ="Louis Armstrong")
 //    UserBadge(username = "Me")
-    MessageContent(text = "je suis arrivé à la maison", time = "6:31 pm")
+    MessageContent(text = "je suis arrivé à la maison hamidb @ gmail.com", time = "6:31 pm")
 }

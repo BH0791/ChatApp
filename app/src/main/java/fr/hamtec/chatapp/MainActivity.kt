@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                 //! Pour styliser une partie de l'application, il suffit d'englober le composant racine
                 //Screen(name = "Androiddddd")
                 //SingleText()
-                MessageContent(text = "je suis arrivé à la maison", time = "6:31 pm")
+                MessageContent(text = "je suis arrivé à la maison hamidb @gmail.com", time = "6:31 pm")
             }
 
         }
