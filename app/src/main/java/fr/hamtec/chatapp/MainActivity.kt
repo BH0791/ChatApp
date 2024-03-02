@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ChatAppTheme {
-                //! MyMethode(name = "Android")
+                //! Pour styliser une partie de l'application, il suffit d'englober le composant racine
                 Screen(name = "Androiddddd")
             }
 
