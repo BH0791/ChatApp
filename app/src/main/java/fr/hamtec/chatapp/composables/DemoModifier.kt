@@ -140,6 +140,5 @@ fun PreviewDemoModifier() {
 //    DemoTypeSafeModifier()
 //    UserBadge(username ="Louis Armstrong")
 //    UserBadge(username = "Me")
-//    MessageContent(text = "je suis arrivé à la maison", time = "6:31 pm")
-    Message()
+    MessageContent(text = "je suis arrivé à la maison", time = "6:31 pm")
 }

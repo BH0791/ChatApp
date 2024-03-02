@@ -9,4 +9,9 @@
 - Personalisation de la typographie
 - Personalisation des formes
 - L'objet MaterialTheme pour accéder aux attributs de notre thème
-- 
+- Style
+- Première version brute du composant
+- Version stylisée du composant
+- Version stylisée via TextStyle
+- Version reposant sur le thème Material Design
+- Plusieurs styles au sein d'un même text

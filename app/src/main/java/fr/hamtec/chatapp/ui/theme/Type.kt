@@ -6,15 +6,17 @@ import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.googlefonts.Font
-import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.hamtec.chatapp.R
 
-
+val fira_code = FontFamily(
+    Font(
+        resId = R.font.fira_code_medium,
+        weight = FontWeight.Medium
+    )
+)
 val lato = FontFamily(
     Font(
         resId = R.font.lato_thin,
@@ -73,7 +75,7 @@ val Typography = Typography(
 )
 
 val ChatAppShapes = Shapes(
-    small = RoundedCornerShape(8.dp),
+    small = RoundedCornerShape(30.dp),
     medium = RoundedCornerShape(8.dp),
     large = RoundedCornerShape(4.dp)
 )

@@ -1,4 +1,5 @@
 <resources >
     <string name = "app_name" >ChatApp</string >
     <string name = "nom" >Hamid</string >
+    <string name = "yellow_submarine">We all live in a yellow submarine</string>
 </resources >

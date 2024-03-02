@@ -15,7 +15,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import fr.hamtec.chatapp.composables.MessageContent
 import fr.hamtec.chatapp.composables.Screen
+import fr.hamtec.chatapp.composables.SingleText
 import fr.hamtec.chatapp.ui.theme.ChatAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,7 +27,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             ChatAppTheme {
                 //! Pour styliser une partie de l'application, il suffit d'englober le composant racine
-                Screen(name = "Androiddddd")
+                //Screen(name = "Androiddddd")
+                //SingleText()
+                MessageContent(text = "je suis arrivé à la maison", time = "6:31 pm")
             }
 
         }

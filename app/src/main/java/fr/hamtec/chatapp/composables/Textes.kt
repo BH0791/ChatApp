@@ -31,12 +31,6 @@ import androidx.compose.ui.unit.sp
 //        style = TextStyle(color = Color.DarkGray)
 //    )
 //}
-
-
-
-
-
-
 //@Preview(showBackground = true)
 //@Composable
 //fun AffichemonTexte() {
