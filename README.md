@@ -15,3 +15,4 @@
 - Version stylisée via TextStyle
 - Version reposant sur le thème Material Design
 - Plusieurs styles au sein d'un même text
+- Texts, boutons et images
