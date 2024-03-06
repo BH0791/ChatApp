@@ -1,8 +1,7 @@
 package fr.hamtec.chatapp.lesCoroutines
 
-import android.annotation.SuppressLint
 import android.util.Log
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

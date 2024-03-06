@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import fr.hamtec.chatapp.composables.MessageContent
 import fr.hamtec.chatapp.composables.Screen
 import fr.hamtec.chatapp.composables.SingleText
+import fr.hamtec.chatapp.gestionEtat.MyClick
 import fr.hamtec.chatapp.lesBoutons.MyFirtButton
 import fr.hamtec.chatapp.lesCoroutines.MaCoroutines
 import fr.hamtec.chatapp.ui.theme.ChatAppTheme
@@ -34,8 +35,9 @@ class MainActivity : ComponentActivity() {
                 //SingleText()
                 //MessageContent(text = "je suis arrivé à la maison hamidb @gmail.com", time = "6:31 pm")
                 //MyFirtButton()
-                Log.i("HAMID", "Thread ====>> " + Thread.currentThread().name)
-                Log.i("HAMID", "Thread ====>> " + MaCoroutines())
+//                Log.i("HAMID", "Thread ====>> " + Thread.currentThread().name)
+//                Log.i("HAMID", "Thread ====>> " + MaCoroutines())
+                MyClick()
             }
 
         }
