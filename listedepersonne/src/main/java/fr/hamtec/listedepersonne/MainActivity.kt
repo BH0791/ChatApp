@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -20,10 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ChatAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Liste de personnes",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    MyScreen( )
                 }
             }
         }
@@ -31,17 +29,18 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name : String, modifier : Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun MyScreen() {
+    Column( modifier = Modifier.fillMaxSize()){
+        Data.listePersons.forEach{
+            PersonneItem(fullName = it)
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun DefaultPreview() {
     ChatAppTheme {
-        Greeting("Android")
+        MyScreen()
     }
 }
