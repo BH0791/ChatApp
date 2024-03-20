@@ -1,4 +1,4 @@
-package fr.hamtec.bookjetpackcompose.ui.theme
+package fr.hamtec.tpbookjetpackcompose.ui.theme
 
 import android.app.Activity
 import android.os.Build

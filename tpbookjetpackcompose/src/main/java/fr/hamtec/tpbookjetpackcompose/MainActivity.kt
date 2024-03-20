@@ -1,4 +1,4 @@
-package fr.hamtec.bookjetpackcompose
+package fr.hamtec.tpbookjetpackcompose
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import fr.hamtec.bookjetpackcompose.ui.theme.ChatAppTheme
+import fr.hamtec.tpbookjetpackcompose.chapitre_3.UserBadge
+import fr.hamtec.tpbookjetpackcompose.ui.theme.ChatAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
@@ -19,29 +20,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ChatAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                UserBadge(username = "Hamid")
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name : String, modifier : Modifier = Modifier) {
-    Text(
-        text = "Hamid $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ChatAppTheme {
-        Greeting("Android")
-    }
-}

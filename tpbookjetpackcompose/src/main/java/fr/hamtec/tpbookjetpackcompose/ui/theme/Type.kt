@@ -1,4 +1,4 @@
-package fr.hamtec.bookjetpackcompose.ui.theme
+package fr.hamtec.tpbookjetpackcompose.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

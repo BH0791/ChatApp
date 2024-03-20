@@ -1,4 +1,4 @@
-package fr.hamtec.bookjetpackcompose
+package fr.hamtec.tpbookjetpackcompose
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("fr.hamtec.bookjetpackcompose", appContext.packageName)
+        assertEquals("fr.hamtec.tpbookjetpackcompose", appContext.packageName)
     }
 }

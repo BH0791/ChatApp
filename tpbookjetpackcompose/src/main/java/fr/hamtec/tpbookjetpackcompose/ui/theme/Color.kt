@@ -1,4 +1,4 @@
-package fr.hamtec.bookjetpackcompose.ui.theme
+package fr.hamtec.tpbookjetpackcompose.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "fr.hamtec.bookjetpackcompose"
+    namespace = "fr.hamtec.tpbookjetpackcompose"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "fr.hamtec.bookjetpackcompose"
+        applicationId = "fr.hamtec.tpbookjetpackcompose"
         minSdk = 29
         targetSdk = 34
         versionCode = 1
@@ -40,7 +40,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.8"
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
     packaging {
         resources {
@@ -66,5 +66,10 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    // https://mvnrepository.com/artifact/androidx.compose.ui/ui-text-google-fonts
+    runtimeOnly("androidx.compose.ui:ui-text-google-fonts:1.6.3")
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 }

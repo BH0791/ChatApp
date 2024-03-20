@@ -1,4 +1,4 @@
-package fr.hamtec.bookjetpackcompose
+package fr.hamtec.tpbookjetpackcompose
 
 import org.junit.Test
 
