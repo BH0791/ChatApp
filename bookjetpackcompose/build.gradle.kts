@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "fr.hamtec.listedepersonne"
+    namespace = "fr.hamtec.bookjetpackcompose"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "fr.hamtec.listedepersonne"
+        applicationId = "fr.hamtec.bookjetpackcompose"
         minSdk = 29
         targetSdk = 34
         versionCode = 1
@@ -66,6 +66,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
 }
