@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 val ChatAppShapes = Shapes(
-    small = RoundedCornerShape(5.dp),
+    small = RoundedCornerShape(15.dp),
     medium = RoundedCornerShape(8.dp),
     large = RoundedCornerShape(4.dp)
 )
