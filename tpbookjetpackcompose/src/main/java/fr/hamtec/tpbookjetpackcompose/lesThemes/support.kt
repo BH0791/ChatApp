@@ -3,6 +3,7 @@ package fr.hamtec.tpbookjetpackcompose.lesThemes
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -55,19 +56,26 @@ fun MessageContent(
                 shape = MaterialTheme.shapes.small
             )
             .padding(8.dp)
+            .fillMaxWidth()
     ) {
         Text(
             text = text,
             color = MaterialTheme.colorScheme.tertiary,
-            fontSize = 18.sp
+            fontSize = 20.sp
         )
         Text(
             text = time,
             modifier = Modifier.align(Alignment.End),
-            color = MaterialTheme.colorScheme.secondary,
+            color = MaterialTheme.colorScheme.primary,
             fontSize = 12.sp,
             fontStyle = FontStyle.Italic,
             fontWeight = FontWeight.Light
+        )
+        Text(
+            text = "Hello",
+            modifier = Modifier.align(Alignment.End),
+            color = MaterialTheme.colorScheme.secondary,
+            style = MaterialTheme.typography.titleLarge
         )
     }
 }
