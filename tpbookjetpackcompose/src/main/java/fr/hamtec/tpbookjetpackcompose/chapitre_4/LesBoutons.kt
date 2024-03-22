@@ -8,12 +8,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.ConnectedTv
+import androidx.compose.material.icons.filled.Message
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -74,10 +78,38 @@ fun FilledButtonExample(onClick : () -> Unit) {
         Text("Filled")
     }
 }
+@Composable
+fun SimpleFABButton(){
+    FloatingActionButton(onClick = { /*TODO*/ },
+        containerColor = Color(0xFFFF5247),
+        contentColor = Color.White,
+        shape = MaterialTheme.shapes.extraLarge
+        ) {
+        Icon(
+            imageVector = Icons.Default.Message,
+            contentDescription = stringResource(id = R.string.cd_send)
+        )
+    }
+}
+@Composable
+fun SimpleExtendedFABButton(){
+    ExtendedFloatingActionButton(
+        onClick = { /*TODO*/ },
+        shape = MaterialTheme.shapes.large,
+        containerColor = Color(0xFFFF52FF),
+        contentColor = Color.Black,
 
+    ) {
+        Icon(
+            imageVector = Icons.Default.Message,
+            contentDescription = null
+        )
+        Text(text = "Nouveau message")
+    }
+}
 @Preview(showBackground = true)
 @Composable
 
 fun SimpleButtonPreview() {
-    SimpleIconButton()
+    SimpleExtendedFABButton()
 }
