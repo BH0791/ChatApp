@@ -1,3 +1,4 @@
 <resources >
     <string name = "app_name" >TPBookJetPackCompose</string >
+    <string name = "cd_send" >cd send</string >
 </resources >
