@@ -11,15 +11,24 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.People
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import fr.hamtec.tpbookjetpackcompose.ui.theme.AppTheme
+import fr.hamtec.tpbookjetpackcompose.ui.theme.JetchatTheme
+import fr.hamtec.tpbookjetpackcompose.ui.theme.JetchatTypography
 
 @Composable
 fun UserBadgeV1(username : String) {
@@ -47,7 +56,7 @@ fun UserBadgeV1(username : String) {
 fun UserBadge(username : String, modifier : Modifier = Modifier) {
     Row(modifier = modifier) {
         Icon(
-            imageVector = Icons.Rounded.Person,
+            imageVector = Icons.Rounded.People,
             contentDescription = null,
             modifier = Modifier
                 .size(20.dp)
@@ -64,14 +73,18 @@ fun UserBadge(username : String, modifier : Modifier = Modifier) {
         )
     }
 }
+
 @Composable
-fun message(modifier : Modifier = Modifier){
+fun message(modifier : Modifier = Modifier) {
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Column(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier
+                .weight(1f)
+                .padding(10.dp)
+            ,
             verticalArrangement = Arrangement.SpaceAround
         ) {
             UserBadge(
@@ -81,14 +94,58 @@ fun message(modifier : Modifier = Modifier){
             UserBadge(
                 username = "Me",
                 modifier = modifier.align(Alignment.End)
-                )
-            MessageContent()
+            )
+            MessageContent("Je suis à la maison avec mon @copain", "6:52 pm")
         }
     }
 }
+
 @Composable
-fun MessageContent() {
-    Text(text = "louis")
+fun MessageContent(
+    message : String,
+    time : String,
+    modifier : Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.secondary,
+                shape = MaterialTheme.shapes.small
+            )
+            .padding(8.dp)
+    ) {
+        Text(
+            text = message.highlighMentions(
+                /*color = MaterialTheme.colorScheme.primary*/
+                color = MaterialTheme.colorScheme.secondary
+            )
+        )
+        Text(
+            text = time,
+            modifier = Modifier.align(Alignment.End),
+            style = JetchatTypography.bodyMedium,
+            color =  MaterialTheme.colorScheme.error
+        )
+    }
+}
+
+fun String.highlighMentions(color : Color) : AnnotatedString {
+    val words : List<String> = this.split(" ")
+    return buildAnnotatedString {
+        words.forEachIndexed { index, word ->
+            if (word.startsWith("@")) {
+                withStyle(style = SpanStyle(color = color)) {
+                    append(word)
+                }
+            } else {
+                append(word)
+            }
+            if (index < words.count() - 1) {
+                append(" ")
+            }
+        }
+    }
 }
 
 @Composable
@@ -192,11 +249,15 @@ fun GoodText(text : String, modifier : Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun UserBadgePreview() {
-    //UserBadge(username = "Louise Hamstrong")
-    //DemoTypeSafeModifier()
-    //DemoPlacementAvecBox()
-    //DemoPlacementBoxBaseLigne()
-    //DemoPlacementBoxBase()
-    //GoodText(text = "Hello momo")
-    message()
+
+    AppTheme {
+        //UserBadge(username = "Louise Hamstrong")
+        //DemoTypeSafeModifier()
+        //DemoPlacementAvecBox()
+        //DemoPlacementBoxBaseLigne()
+        //DemoPlacementBoxBase()
+        //GoodText(text = "Hello momo")
+        message()
+        //MessageContent("Ivan", "5:21 mp")
+    }
 }

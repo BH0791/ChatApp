@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            AppTheme {
+            ChatAppTheme {
                 //UserBadgeV1(username = "HamidB")
                 MessageContent(text = "Hello manolo", time = "2:45 mp")
             }
