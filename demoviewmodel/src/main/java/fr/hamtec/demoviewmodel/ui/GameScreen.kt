@@ -46,12 +46,85 @@ import fr.hamtec.demoviewmodel.R
 //- Tous les composables de l'interface utilisateur sont définis dans le fichier GameScreen.kt.
 //- Les sections suivantes vous présentent quelques fonctions modulables.
 
+/**
+ * Le composable GameScreen contient les fonctions composables GameStatus et GameLayout, le titre
+ * du jeu, le nombre de mots et les composables des boutons Submit (Envoyer) et Skip (Ignorer).
+ */
+@Composable
+fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
+    val gameUiState by gameViewModel.uiState.collectAsState()
+    val mediumPadding = dimensionResource(R.dimen.padding_medium)
+
+    Column(
+            modifier = Modifier
+                    .statusBarsPadding()
+                    .verticalScroll(rememberScrollState())
+                    .safeDrawingPadding()
+                    .padding(mediumPadding),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        Text(
+                text = stringResource(R.string.app_name),
+                style = typography.titleLarge,
+        )
+        GameLayout(
+                onUserGuessChanged = { gameViewModel.updateUserGuess(it) },
+                wordCount = gameUiState.currentWordCount,
+                userGuess = gameViewModel.userGuess,
+                onKeyboardDone = { gameViewModel.checkUserGuess() },
+                currentScrambledWord = gameUiState.currentScrambledWord,
+                isGuessWrong = gameUiState.isGuessedWordWrong,
+                modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                        .padding(mediumPadding)
+        )
+        Column(
+                modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(mediumPadding),
+                verticalArrangement = Arrangement.spacedBy(mediumPadding),
+                horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            Button(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = { gameViewModel.checkUserGuess() }
+            ) {
+                Text(
+                        text = stringResource(R.string.submit),
+                        fontSize = 16.sp
+                )
+            }
+
+            OutlinedButton(
+                    onClick = { gameViewModel.skipWord() },
+                    modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                        text = stringResource(R.string.skip),
+                        fontSize = 16.sp
+                )
+            }
+        }
+
+        GameStatus(score = gameUiState.score, modifier = Modifier.padding(20.dp))
+
+        if (gameUiState.isGameOver) {
+            FinalScoreDialog(
+                    score = gameUiState.score,
+                    onPlayAgain = { gameViewModel.resetGame() }
+            )
+        }
+    }
+}
 
 /**
  * GameStatus est une fonction composable qui affiche le score du jeu en bas de l'écran. La fonction
  * composable contient un composable Text dans une Card. Pour l'instant, le score est codé en dur pour être
   */
-
 @Composable
 fun GameStatus(score: Int, modifier: Modifier = Modifier) {
     Card(
@@ -140,8 +213,46 @@ fun GameLayout(
         }
     }
 }
+
+/*
+ * Creates and shows an AlertDialog with final score.
+ */
+@Composable
+private fun FinalScoreDialog(
+        score: Int,
+        onPlayAgain: () -> Unit,
+        modifier: Modifier = Modifier
+) {
+    val activity = (LocalContext.current as Activity)
+
+    AlertDialog(
+            onDismissRequest = {
+                // Dismiss the dialog when the user clicks outside the dialog or on the back
+                // button. If you want to disable that functionality, simply use an empty
+                // onCloseRequest.
+            },
+            title = { Text(text = stringResource(R.string.congratulations)) },
+            text = { Text(text = stringResource(R.string.you_scored, score)) },
+            modifier = modifier,
+            dismissButton = {
+                TextButton(
+                        onClick = {
+                            activity.finish()
+                        }
+                ) {
+                    Text(text = stringResource(R.string.exit))
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = onPlayAgain) {
+                    Text(text = stringResource(R.string.play_again))
+                }
+            }
+    )
+}
 @Preview(showBackground = true)
 @Composable
-fun PreviewVoir(){
-    GameStatus(100)
+fun GameScreenPreview() {
+        GameScreen()
+
 }
