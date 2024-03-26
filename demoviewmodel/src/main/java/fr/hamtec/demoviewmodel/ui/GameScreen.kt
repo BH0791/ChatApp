@@ -65,3 +65,83 @@ fun GameStatus(score: Int, modifier: Modifier = Modifier) {
 
     }
 }
+
+/**
+ * GameLayout est une fonction composable qui affiche la fonctionnalité principale du jeu, qui
+ * comprend le mot mélangé, les instructions du jeu et un champ de texte qui accepte les propositions
+ * de l'utilisateur.
+ */
+@Composable
+fun GameLayout(
+        currentScrambledWord: String,
+        wordCount: Int,
+        isGuessWrong: Boolean,
+        userGuess: String,
+        onUserGuessChanged: (String) -> Unit,
+        onKeyboardDone: () -> Unit,
+        modifier: Modifier = Modifier
+) {
+    val mediumPadding = dimensionResource(R.dimen.padding_medium)
+
+    Card(
+            modifier = modifier,
+            elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
+    ) {
+        Column(
+                verticalArrangement = Arrangement.spacedBy(mediumPadding),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(mediumPadding)
+        ) {
+            Text(
+                    modifier = Modifier
+                            .clip(shapes.medium)
+                            .background(colorScheme.surfaceTint)
+                            .padding(horizontal = 10.dp, vertical = 4.dp)
+                            .align(alignment = Alignment.End),
+                    text = stringResource(R.string.word_count, wordCount),
+                    style = typography.titleMedium,
+                    color = colorScheme.onPrimary
+            )
+            Text(
+                    text = currentScrambledWord,
+                    style = typography.displayMedium
+            )
+            Text(
+                    text = stringResource(R.string.instructions),
+                    textAlign = TextAlign.Center,
+                    style = typography.titleMedium
+            )
+            OutlinedTextField(
+                    value = userGuess,
+                    singleLine = true,
+                    shape = shapes.large,
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = TextFieldDefaults.colors(
+                            focusedContainerColor = colorScheme.surface,
+                            unfocusedContainerColor = colorScheme.surface,
+                            disabledContainerColor = colorScheme.surface,
+                    ),
+                    onValueChange = onUserGuessChanged,
+                    label = {
+                        if (isGuessWrong) {
+                            Text(stringResource(R.string.wrong_guess))
+                        } else {
+                            Text(stringResource(R.string.enter_your_word))
+                        }
+                    },
+                    isError = isGuessWrong,
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                            imeAction = ImeAction.Done
+                    ),
+                    keyboardActions = KeyboardActions(
+                            onDone = { onKeyboardDone() }
+                    )
+            )
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun PreviewVoir(){
+    GameStatus(100)
+}
