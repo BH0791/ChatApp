@@ -10,6 +10,7 @@ class MainViewModel: ViewModel() {
 
     val uiState: MutableState<UIState> = mutableStateOf(UIState())
 
+    // ** Logique des événement opéré selon les événements envoyer par l'utilisateur
     init {
         onUiEvent(UiEvent.OnInit)
     }
@@ -22,6 +23,7 @@ class MainViewModel: ViewModel() {
             }
             is UiEvent.OnGenerateClick -> {
                 uiState.value = UIState(
+                        // ** dataSource.randomPerson ==>> il faut une fonction
                         dataSource.randomPerson(), uiState.value.clickNumber + 1
                 )
             }
