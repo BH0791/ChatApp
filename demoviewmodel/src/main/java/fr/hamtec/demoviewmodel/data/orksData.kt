@@ -1,6 +1,9 @@
 package fr.hamtec.demoviewmodel.data
 //- Ce fichier contient la liste des mots utilisés dans le jeu, ainsi que des constantes pour le
 //- nombre maximal de mots par partie et le nombre de points gagnés par le joueur pour chaque mot trouvé.
+//! AVERTISSEMENT : Il est déconseillé de coder des chaînes en dur. Ajoutez des chaînes à strings.xml
+//! pour faciliter la localisation de l'application. Dans cet exemple, les chaînes sont codées en dur
+//! par souci de simplicité et vous permettent de vous concentrer sur l'architecture de l'application.
 const val MAX_NO_OF_WORDS = 10
 const val SCORE_INCREASE = 20
 
