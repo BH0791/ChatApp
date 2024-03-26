@@ -1,4 +1,4 @@
-package fr.hamtec.tpviewmodel
+package fr.hamtec.tpviewmodel.vui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -23,19 +23,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun MyScreen(viewModel: MainViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
-    Box(modifier = Modifier.fillMaxSize()) {
-        Text(
-                text = viewModel.randomPerson,
-                fontSize = 25.sp,
-                modifier = Modifier.align(Alignment.Center)
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyScreen()
-}
