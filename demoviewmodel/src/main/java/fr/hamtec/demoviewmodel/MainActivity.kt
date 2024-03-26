@@ -13,7 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import fr.hamtec.demoviewmodel.ui.theme.ChatAppTheme
-
+//- Ce fichier contient principalement du code généré à partir d'un modèle. Le composable GameScreen
+//- est affiché dans le bloc setContent{}.
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
