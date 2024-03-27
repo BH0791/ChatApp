@@ -31,6 +31,20 @@ class GameViewModel : ViewModel() {
      * l'état de l'écran survive aux changements de configuration.
      */
     private val _uiState = MutableStateFlow(GameUiState())
+
+    /**
+     * StateFlow est un flux observable de conteneur de données qui émet les mises à jour de l'état
+     * actuel et du nouvel état. Sa propriété value reflète la valeur de l'état actuel. Pour mettre
+     * à jour l'état et l'envoyer au flux, attribuez une nouvelle valeur à la propriété de valeur de
+     * la classe MutableStateFlow. Dans Android, StateFlow fonctionne bien avec les classes qui doivent
+     * conserver un état immuable observable. Un StateFlow peut être exposé à partir de GameUiState
+     * afin que les composables puissent écouter les mises à jour de l'état de l'interface utilisateur
+     * et faire en sorte que l'état de l'écran survive aux changements de configuration. Dans la classe
+     * GameViewModel, ajoutez la propriété _uiState suivante.
+     * ** https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/as-state-flow.html
+     * - f un <T> MutableStateFlow<T>.asStateFlow(): StateFlow<T>
+     * Représente ce flux d'état mutable comme un flux d'état en lecture seule.
+     */
     val uiState : StateFlow<GameUiState> = _uiState.asStateFlow()
 
     var userGuess by mutableStateOf("")
