@@ -1,6 +1,6 @@
 ## Démonstration de ViewModel
 
-> C'est auprès d'un sage qu'il faut apprendre la sagesse. **Rhésos de Euripide**
+> C'est auprès d'un sage qu'il faut apprendre la sagesse. *Rhésos de Euripide*
 
 WordsData.kt
 
