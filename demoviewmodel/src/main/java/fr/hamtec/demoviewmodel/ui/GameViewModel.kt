@@ -31,7 +31,7 @@ class GameViewModel : ViewModel() {
      * l'état de l'écran survive aux changements de configuration.
      */
     private val _uiState = MutableStateFlow(GameUiState())
-    val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
+    val uiState : StateFlow<GameUiState> = _uiState.asStateFlow()
 
     var userGuess by mutableStateOf("")
         private set
@@ -41,12 +41,12 @@ class GameViewModel : ViewModel() {
      * la propriété currentWord pour servir d'ensemble modifiable qui stockera les mots utilisés
      * dans le jeu.
      */
-    private var usedWords: MutableSet<String> = mutableSetOf()
+    private var usedWords : MutableSet<String> = mutableSetOf()
 
     /**
      * Pour enregistrer le mot mélangé
      */
-    private lateinit var currentWord: String
+    private lateinit var currentWord : String
 
     /**
      * Bloc init au GameViewModel et appelle resetGame() à partir de celui-ci.
@@ -70,27 +70,28 @@ class GameViewModel : ViewModel() {
     /*
      * Mettre à jour l'estimation de l'utilisateur
      */
-    fun updateUserGuess(guessedWord: String){
+    fun updateUserGuess(guessedWord : String) {
         userGuess = guessedWord
     }
 
-    /*
-     * Checks if the user's guess is correct.
-     * Increases the score accordingly.
+    /**
+     * Vérifie si l'estimation de l'utilisateur est correcte.
+     * Augmente le score en conséquence.Augmente le score en conséquence.
      */
     fun checkUserGuess() {
         if (userGuess.equals(currentWord, ignoreCase = true)) {
-            // User's guess is correct, increase the score
-            // and call updateGameState() to prepare the game for next round
+            // ** Si la réponse de l'utilisateur est correcte, le score augmente.
+            // ** et appeler updateGameState() pour préparer le jeu pour le prochain tour.
+
             val updatedScore = _uiState.value.score.plus(SCORE_INCREASE)
             updateGameState(updatedScore)
         } else {
-            // User's guess is wrong, show an error
+            // ** L'estimation de l'utilisateur est erronée, afficher une erreur
             _uiState.update { currentState ->
                 currentState.copy(isGuessedWordWrong = true)
             }
         }
-        // Reset user guess
+        // ** Réinitialiser la supposition de l'utilisateur
         updateUserGuess("")
     }
 
@@ -99,17 +100,16 @@ class GameViewModel : ViewModel() {
      */
     fun skipWord() {
         updateGameState(_uiState.value.score)
-        // Réinitialiser la supposition de l'utilisateur
+        // ** Réinitialiser la supposition de l'utilisateur
         updateUserGuess("")
     }
 
     /*
-     * Picks a new currentWord and currentScrambledWord and updates UiState according to
-     * current game state.
+     * Choisit un nouveau mot courant et un mot brouillé courant et met à jour UiState en fonction de l'état actuel du jeu.
      */
-    private fun updateGameState(updatedScore: Int) {
-        if (usedWords.size == MAX_NO_OF_WORDS){
-            //Last round in the game, update isGameOver to true, don't pick a new word
+    private fun updateGameState(updatedScore : Int) {
+        if (usedWords.size == MAX_NO_OF_WORDS) {
+            // ** Dernier tour du jeu, mettre à jour isGameOver à true, ne pas choisir un nouveau mot
             _uiState.update { currentState ->
                 currentState.copy(
                         isGuessedWordWrong = false,
@@ -117,7 +117,7 @@ class GameViewModel : ViewModel() {
                         isGameOver = true
                 )
             }
-        } else{
+        } else {
             // Normal round in the game
             _uiState.update { currentState ->
                 currentState.copy(
@@ -134,7 +134,7 @@ class GameViewModel : ViewModel() {
      * Méthode d'assistance pour lire le mot actuel shuffleCurrentWord() en mode aléatoire, qui
      * accepte une String et renvoie la String dans un ordre aléatoire
      */
-    private fun shuffleCurrentWord(word: String): String {
+    private fun shuffleCurrentWord(word : String) : String {
         val tempWord = word.toCharArray()
         // Mots mêlés
         tempWord.shuffle()
@@ -149,7 +149,7 @@ class GameViewModel : ViewModel() {
      * Continuez à prendre un nouveau mot au hasard jusqu'à ce que vous obteniez un mot qui n'a jamais
      * été utilisé auparavant.
      */
-    private fun pickRandomWordAndShuffle(): String {
+    private fun pickRandomWordAndShuffle() : String {
         //- Continuez à prendre un nouveau mot au hasard jusqu'à ce que vous obteniez un mot qui n'a jamais été utilisé auparavant.
         currentWord = allWords.random()
         return if (usedWords.contains(currentWord)) {
