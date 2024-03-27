@@ -13,27 +13,54 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 /**
- * ViewModel containing the app data and methods to process the data
+ * Conteneurs d'états
+ * ViewModel contenant les données de l'application et les méthodes pour traiter les données
  */
 class GameViewModel : ViewModel() {
 
-    // Game UI state
+
+    /**
+     * État de l'interface utilisateur du jeu
+     * StateFlow est un flux observable de conteneur de données qui émet les mises à jour de l'état
+     * actuel et du nouvel état. Sa propriété value reflète la valeur de l'état actuel. Pour mettre
+     * à jour l'état et l'envoyer au flux, attribuez une nouvelle valeur à la propriété de valeur de
+     * la classe MutableStateFlow.
+     * Dans Android, StateFlow fonctionne bien avec les classes qui doivent conserver un état immuable
+     * observable. Un StateFlow peut être exposé à partir de GameUiState afin que les composables
+     * puissent écouter les mises à jour de l'état de l'interface utilisateur et faire en sorte que
+     * l'état de l'écran survive aux changements de configuration.
+     */
     private val _uiState = MutableStateFlow(GameUiState())
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
 
     var userGuess by mutableStateOf("")
         private set
 
-    // Set of words used in the game
+    /**
+     * Ensemble de mots utilisés dans le jeu,
+     * la propriété currentWord pour servir d'ensemble modifiable qui stockera les mots utilisés
+     * dans le jeu.
+     */
     private var usedWords: MutableSet<String> = mutableSetOf()
+
+    /**
+     * Pour enregistrer le mot mélangé
+     */
     private lateinit var currentWord: String
 
+    /**
+     * Bloc init au GameViewModel et appelle resetGame() à partir de celui-ci.
+     */
     init {
         resetGame()
     }
 
     /*
-     * Re-initializes the game data to restart the game.
+     * Réinitialise les données du jeu pour redémarrer le jeu.
+     * permettant d'initialiser le jeu. Vous utiliserez cette fonction plus tard pour démarrer et
+     * redémarrer le jeu. Dans cette fonction, effacez tous les mots de l'ensemble usedWords et
+     * initialisez _uiState.
+     * Choisissez un nouveau mot pour currentScrambledWord avec pickRandomWordAndShuffle().
      */
     fun resetGame() {
         usedWords.clear()
@@ -41,7 +68,7 @@ class GameViewModel : ViewModel() {
     }
 
     /*
-     * Update the user's guess
+     * Mettre à jour l'estimation de l'utilisateur
      */
     fun updateUserGuess(guessedWord: String){
         userGuess = guessedWord
@@ -68,11 +95,11 @@ class GameViewModel : ViewModel() {
     }
 
     /*
-     * Skip to next word
+     * Passer au mot suivant
      */
     fun skipWord() {
         updateGameState(_uiState.value.score)
-        // Reset user guess
+        // Réinitialiser la supposition de l'utilisateur
         updateUserGuess("")
     }
 
@@ -103,9 +130,13 @@ class GameViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Méthode d'assistance pour lire le mot actuel shuffleCurrentWord() en mode aléatoire, qui
+     * accepte une String et renvoie la String dans un ordre aléatoire
+     */
     private fun shuffleCurrentWord(word: String): String {
         val tempWord = word.toCharArray()
-        // Scramble the word
+        // Mots mêlés
         tempWord.shuffle()
         while (String(tempWord) == word) {
             tempWord.shuffle()
@@ -113,6 +144,11 @@ class GameViewModel : ViewModel() {
         return String(tempWord)
     }
 
+    /**
+     * Méthode d'assistance pour choisir un mot aléatoire dans la liste et le lire en mode aléatoire.
+     * Continuez à prendre un nouveau mot au hasard jusqu'à ce que vous obteniez un mot qui n'a jamais
+     * été utilisé auparavant.
+     */
     private fun pickRandomWordAndShuffle(): String {
         //- Continuez à prendre un nouveau mot au hasard jusqu'à ce que vous obteniez un mot qui n'a jamais été utilisé auparavant.
         currentWord = allWords.random()

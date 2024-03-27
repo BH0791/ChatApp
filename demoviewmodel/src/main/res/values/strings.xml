@@ -1,7 +1,7 @@
 <resources >
-    <string name = "app_name" >DemoViewModel</string >
+    <string name = "app_name" >ViewModel</string >
     <string name="instructions">Recomposer le mot en utilisant toutes les lettres.</string>
-    <string name="skip">Passer</string>
+    <string name="skip">Ignorer</string>
     <string name="submit">Soumettre</string>
     <string name="score">Score: %d</string>
     <string name="word_count">%d/10</string>

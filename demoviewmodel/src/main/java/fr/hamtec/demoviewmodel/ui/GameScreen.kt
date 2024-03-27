@@ -180,6 +180,7 @@ fun GameLayout(
                     color = colorScheme.onPrimary
             )
             Text(
+                    // ** Définir le paramètre text du premier champ de texte de la colonne sur currentScrambledWord.
                     text = currentScrambledWord,
                     style = typography.displayMedium
             )
@@ -219,7 +220,8 @@ fun GameLayout(
 }
 
 /*
- * Creates and shows an AlertDialog with final score.
+ * Le composable FinalScoreDialog affiche une boîte de dialogue, c'est-à-dire une petite fenêtre qui
+ * invite l'utilisateur à effectuer les actions Play Again (Rejouer) ou Exit (Quitter le jeu).
  */
 @Composable
 private fun FinalScoreDialog(

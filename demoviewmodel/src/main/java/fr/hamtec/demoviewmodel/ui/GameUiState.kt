@@ -3,7 +3,7 @@ package fr.hamtec.demoviewmodel.ui
 //- composable contient un composable Text dans une Card. Pour l'instant, le score est codé en dur pour être 0.
 
 /**
- * Data class that represents the game UI state
+ * Classe de données qui représente l'état de l'interface utilisateur du jeu
  */
 data class GameUiState(
         val currentScrambledWord: String = "",
