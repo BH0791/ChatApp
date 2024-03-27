@@ -142,7 +142,11 @@ fun GameStatus(score: Int, modifier: Modifier = Modifier) {
 /**
  * GameLayout est une fonction composable qui affiche la fonctionnalité principale du jeu, qui
  * comprend le mot mélangé, les instructions du jeu et un champ de texte qui accepte les propositions
- * de l'utilisateur.
+ * de l'utilisateur. Notez que le code GameLayout ci-dessous contient une colonne dans une Card avec
+ * trois éléments "enfant" : le mot mélangé, le texte des instructions et le champ de texte pour le
+ * mot OutlinedTextField de l'utilisateur. Pour le moment, le mot mélangé est codé en dur pour être
+ * scrambleun. Plus tard dans l'atelier, vous implémenterez une fonctionnalité permettant d'afficher
+ * un mot du fichier WordsData.kt.
  */
 @Composable
 fun GameLayout(
