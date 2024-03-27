@@ -1,5 +1,7 @@
 ## Démonstration de ViewModel
 
+> C'est auprès d'un sage qu'il faut apprendre la sagesse. **Rhésos de Euripide**
+
 WordsData.kt
 
 Ce fichier contient la liste des mots utilisés dans le jeu, ainsi que des constantes pour le nombre maximal de mots par partie et le nombre de points gagnés par le joueur pour chaque mot trouvé.
